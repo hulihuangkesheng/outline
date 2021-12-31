@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img{
+            display: flex;
+            background-size: 100px;
+            background-repeat: no-repeat;
+            background-position: 0px;
+            z-index: 10000;
+            width: 100px;
+            height: 100px;
+            border: solid red 1px;
+        }
+    </style>
+</head>
+<body>
+    <h3>图片上传</h3>
+    <!-- <form action="http://localhost:3136/api/upload/avatar" method="post" enctype="multipart/form-data" style="width: 100px;height: 100px; border: 1px red solid;" target="_blank" class="img">
+        <input type="file" name="avatar" multiple >
+        <button type="submit">上传图片</button>
+    </form><br><br>
+    <form method="post" action="http://localhost:3136/api/upload/goods" enctype="multipart/form-data" target="_blank"class="img">
+        <input type="file" name="goods" multiple />
+        <button type="submit">上传商品</button>
+    </form> -->
+
+    <div>
+        <input type="file" name="avatar" class="img"/>
+        <button id="btn">上传</button>
+    </div>
+    <!-- <div>
+        <input type="file" name="photos" class="img" multiple>
+        <button id="btn">上传</button>
+    </div> -->
+
+    <script>
+        let avatar = document.querySelector('[name = avatar]')
+        let photos = document.querySelector('[name=photos]')
+        let btn = document.querySelector('#btn')
+        btn.onclick = function(){
+            const fdata = new FormData()
+            //单张图片
+            fdata.set('username','laoxie')
+            fdata.set('avatar',avatar.files[0])
+            //上传多张图片
+            // Array.prototype.forEach.call(photos.files,function(item){
+            //     fdata.append('photos',item)
+            // })
+            const xhr = new XMLHttpRequest()
+            xhr.open('post','http://localhost:3136/api/upload/avatar',true)
+            // xhr.open('post','http://localhost:3136/api/upload/photos/upload',true)
+            xhr.send(fdata)
+        }
+        
+    </script>
+</body>
+</html>

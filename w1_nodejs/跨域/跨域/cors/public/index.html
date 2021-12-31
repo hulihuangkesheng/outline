@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS设置响应头</title>
+</head>
+
+<body>
+    <div class="goodslist">
+        <ul>
+
+        </ul>
+
+    </div>
+    <h3>CORC实现简单跨域</h3>
+    <script>
+        let goodsList = document.querySelector('.goodslist ul')
+        //获取数据渲染
+        const xhr = new XMLHttpRequest()
+        xhr.onload = function () {
+            console.log(xhr.response);
+            const goodsdata = xhr.response;
+            //复杂化跨域 当初post、get、head请求方法之外 1、Access-Control-Allow-Methods:
+            goodsList.innerHTML = goodsdata.map((item) => {
+                return `
+                <li data-id=${item.id}>
+                <h2>${item.name}</h2>
+                <p>${item.price}</p>
+                <button class="del">删除</button>
+                <button class="modify">修改</button>
+                </li>
+                `
+            }).join('')
+        }
+        xhr.responseType = 'json'
+        xhr.open('get', 'http://localhost:3136/api/goods/list', true)
+        xhr.send()
+
+
+
+
+        //通过用事件委托获取id删除数据
+        goodsList.onclick = function (e) {
+            if (e.target.className === 'del') {
+                //通过dataset-获取与data- 有关的属性值
+                console.log(JSON.stringify(e.target.parentElement.dataset));
+                const {
+                    id
+                } = e.target.parentElement.dataset;
+                //通过路由删除数据
+                const xhr = new XMLHttpRequest();
+                xhr.open('delete', 'http://localhost:3136/api/goods/'+ id, true)
+                xhr.send()
+            } 
+            else {
+                //通过请求头修改数据
+                if (e.target.className == 'modify') {
+                    const {
+                        id
+                    } = e.target.parentElement.dataset;
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('put', 'http://localhost:3136/api/goods/'+ id, true)
+                    //设置请求头
+                    // xhr.setRequestHeader('Content-Type','application/json')
+                    xhr.setRequestHeader('Content-Type','application/json')
+                    xhr.send(`{"price":998,"oldprice":1998}`); 
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

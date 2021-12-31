@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsonp跨域</title>
+</head>
+<body>
+    <h3>我是JSONp跨域</h3>
+    <h1>跨域解决方案之JSONP</h1>
+    <div>
+        <button id="btn">jsonp跨域</button>
+        <div id="user">
+
+        </div>
+    </div>
+    <!-- <script>
+        //封装全局函数，并发函数名给后端
+        function getData(){
+            const script = document.createElement('scrpit')
+            //利用script标签无跨域性质的特点
+            script.src = 'http://localhost/3136/api/jsonp/jsonp?callback=getData';
+            document.body.appendChild(script)
+        }
+    </script> -->
+    <script>
+        let user = document.querySelector('#user')
+        function getData(data){
+            // const data = data;
+            // user.innerHTML = JSON.stringify(data);
+        }
+
+        // const btn = document.querySelector('#btn')
+        // btn.onclick = function(){
+        //     //添加script标签和标签下的src属性
+        //     let script = document.createElement('script')
+        //     script.src = "http://localhost:3136/api/jsonp?callback=getData"
+            
+        //     document.body.appendChild(script);
+        // }
+    </script>
+
+    <script src="http://localhost:3136/api/jsonp?callback=getData"></script>
+</body>
+</html>

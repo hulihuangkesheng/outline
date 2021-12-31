@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table标签切换</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+</head>
+
+<body>
+    <div class="contaiter" id="app">
+        <h2>tab标签切换</h2>
+        <!-- 1.什么是响应式属性
+            数据的变换会影响视图的更新
+        -->
+        <!-- 2.编程思维的改变
+             节点操作思维  数据驱动思维 
+        -->
+        <ul class="nav">
+            <li class="nav-item " v-for="(item,index) in name">
+                <a v-bind:class="'nav-link'+(current===index?active:'')"
+                    v-on:click="current==index||changTag(index)" href="#">{{index}}-{{item}}</a>
+            </li>
+
+            <!-- v-bind对style和class 可以对对象和数组进行修改 -->
+            <!-- 数组形式 -->
+            <!-- <li v-bind:class="['nav-link',current===index?active:'']">
+                <a class="nav-link" href="#">Link</a>
+            </li> -->
+            <!-- 对象形式 -->
+            <!-- <li v-bind:class="{'nav-link:true',active:current===index}">
+                <a class="nav-link" href="#">Link</a>
+            </li> -->
+            <!-- 对象数组 -->
+            <!-- <li v-bind:class="['nav-link',{active:current===index}]">
+                <a class="nav-link" href="#">Link</a>
+            </li> -->
+        </ul>
+        <div class="p-5 border border-top-0 ">
+            <div v-for="(item,idx) in name" v-show="idx===current">{{idx+1}}</div>
+        </div>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                current: 0,
+                name: [nav1, nav2, nav3, nav4]
+            },
+            methods: {
+                changTag(index) {
+                    this.current
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

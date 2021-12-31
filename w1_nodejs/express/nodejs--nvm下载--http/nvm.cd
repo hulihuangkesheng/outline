@@ -1,0 +1,49 @@
+一、安装及作用
+1，nvm的作用:
+进行对nodejs版本控制
+
+2、nvm 下载地址
+https://github.com/coreybutler/nvm-windows/releases
+注意： github服务器在国内较少，下载速度会很慢
+
+3、nvm安装
+nvm-setup.zip：这是一个安装包，下载之后点击安装，无需配置就可以使用，方便。
+
+二、管理
+
+4、查看本地所有版本
+nvm list 
+
+5、安装、命令中的版本号可自定义，具体参考命令1查询出来的列表
+nvm install 版本号
+
+6、使用指定版本号
+nvm use 版本号
+
+7、卸载
+nvm uninstall 版本号
+
+二、命令提示
+1.nvm arch:显示Node是运行在32位还是64位
+
+2、nvm install <version> [arch] :安装node
+
+3、nvm list [版本号] :显示已安装的列表
+
+4、nvm on :开启node.js版本管理
+
+5、nvm off :关闭node.js版本管理
+
+6、nvm proxy [url] :设置下载代理，不加可选参数url，显示当前代理。
+
+7、nvm node_mirror [url] :设置node镜像。
+
+8、nvm npm_mirror [url] :设置npm镜像
+
+9、nvm uninstall <version> :卸载指定版本node
+
+10、nvm use [version] [arch] :使用指定版本Node。可指定32/64位。
+
+11、nvm root [path] :设置存储不同版本node的目录。
+
+12、nvm version :显示nvm版本

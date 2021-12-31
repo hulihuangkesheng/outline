@@ -1,0 +1,21 @@
+npm是世界上最大的开放源代码的生态系统；
+可以通过Npm下载各种包，网址https://www.npmjs.com
+md5 /求幂
+
+silly-datatime//日期格式化模块
+调用sd.format(new Date(),'YYYY-MM-DD HH:mm')
+
+npm list  查看
+
+npm info 查看版本
+
+安装指定的包模块后面加@版本号
+
+^标识符 第一位版本号不变，后面两位取最新
+~表示前面连个不变，最后一个取最新
+*表示全部取最新
+
+
+淘宝镜像：：
+http://www.npmjs.org  npm包官网
+https://npm.taobao.org 淘宝Npm镜像官网

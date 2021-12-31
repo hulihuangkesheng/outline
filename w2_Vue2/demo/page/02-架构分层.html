@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-架构分层</title>
+</head>
+
+<body>
+    <h3>02-架构分层</h3>
+    <!-- 视图层 View -->
+    <div class="ele">
+            
+            <p>{{aaa}}{{bbb}}{{ccc}} </p>
+            <!-- <p v-on:click="aaa++,bbb++,ccc++">+</p>
+            <p v-on:click="aaa--,bbb--,ccc--">-</p> -->
+            <p>
+                <!-- <input type="text" value="111"> -->
+                <!-- <input type="text" v-bind:value="aaa" v-on:input=''> -->
+                <input type="text" v-model="aaa"  v-on:input=" ">
+            </p>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        //数据层 Model
+        const data = {
+            aaa: 1,
+            bbb: 2,
+            ccc: 1
+        }
+
+        //控制层 MVVM
+        const vm = new Vue({
+            el: '.ele',
+            data: data
+        })
+    </script>
+</body>
+
+</html>

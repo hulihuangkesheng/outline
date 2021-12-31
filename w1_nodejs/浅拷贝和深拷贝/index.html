@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浅拷贝和深拷贝</title>
+</head>
+<body>
+    <h3>浅拷贝和深拷贝</h3>
+    <script>
+        //1、浅拷贝
+        let obj = {
+            name:'小明',
+            hobby:'爱打篮球',
+            heigth:178,
+            sex:'男',
+        }
+        
+        //若想得到一个一模一样的对象，先创建一个空对象，然后遍历
+        var obj1={}
+        // for(let key in obj){
+        //     obj1[key] = obj[key]
+        // }
+        // console.log(obj1);
+
+
+        //2、深拷贝
+        let obj2 = {
+            name:'小明',
+            hobby:['爱打篮球','干饭','旅游','打豆豆'],
+            heigth:178,
+            sex:'男',
+        }
+        for(let key in obj2){
+
+            if(Array.isArray(obj2[key])){
+                obj1[key]=obj2[key].map(item=>item)
+            }else if(typeof obj2[key] === 'object'){
+                for(let k in obj2[key]){
+                    obj1[key][k] = obj2[key][k]
+                }
+            }else{
+                obj1[key] = obj2[key]
+            }
+        }
+        console.log(obj1);
+        //封装递归的方法，实现深拷贝
+
+        function Copy(obj){
+            let newObj = {}
+            for(let key in obj2){
+                if(typeof obj[key] === 'object'&& obj[key]!=null){
+                    newObj = Copy(obj[key])
+                }else{
+                    newObj = obj[key]
+                }
+
+            }
+        }
+    </script>
+</body>
+</html>

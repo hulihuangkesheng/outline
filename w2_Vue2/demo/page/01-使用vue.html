@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.使用vue</title>
+</head>
+
+<body>
+    <H3>1.使用vue</H3>
+    <div id="eml">
+        {{aaa}}+
+        <!-- <select name="" id="sel">
+            <option value="+">+</option>
+            <option value="+">-</option>
+            <option value="+">*</option>
+        </select> -->
+        {{bbb}} = {{aaa+bbb}}
+        <span>Message: {{ aaa }}</span>
+        <!-- {{aaa}} -->
+        <button v-on:click='aaa++,bbb'>计算</button>
+    </div>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const data = {
+            aaa: 10,
+            bbb:10
+        }
+        //new vue对象
+        const vm = new Vue({
+            el: '#eml',
+            data: data
+        })
+    </script>
+</body>
+
+</html>
